@@ -1,15 +1,16 @@
 // import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
-// import About from './components/About';
+import About from './components/About';
+import Dashboard from './components/Dashboard';
 import TextForm from './components/TextForm';
 import { useState } from 'react';
 import Alert from './components/Alert';
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   Routes
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from "react-router-dom";
 
 
 function App() {
@@ -48,38 +49,39 @@ const toggleMode = () =>{
     // document.title = 'TextUtil - Light Mode';
   }
 }
-  // return (
-  //   <>
-  //   <Router>
-  //   <Navbar dashboard="DASHBOARD" team="Functionality" mode={mode} toggleMode={toggleMode} />
-  //   {/* <Navbar /> */}
-  //   <Alert alert={alert}/>
-  //   {/* A <Switch> looks through its children <Route>s and
-  //           renders the first one that matches the current URL. */}
-  //   <div className='container my-3'>
-  //   <Routes>
-  //         <Route path="/about" element = {<About mode={mode} />}/>
-            
-          
-          
-  //         <Route path="/" element = {<TextForm showAlert={showAlert} heading="Enter the text to analyze:"/>}/>
-            
-          
-  //     </Routes>
-    
-  //     {/* <About/> */}
-  //   </div>
-  //   </Router> 
-  //   </> 
-  // );
-
-  return(
+  return (
     <>
-    <Navbar dashboard="DASHBOARD" team="Functionality" mode={mode} toggleMode={toggleMode}/>
+    <Router>
+    <Navbar dashboard="Dashboard" team="Functionality" mode={mode} toggleMode={toggleMode} />
+    {/* <Navbar /> */}
     <Alert alert={alert}/>
-    <TextForm showAlert={showAlert} heading="Enter the text to analyze:"/>
-    </>
+    {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+    <div className='container my-3'>
+    <Routes>
+          <Route path="/about" element = {<About mode={mode} />}/>
+          <Route path="/dashboard" element = {<Dashboard />}/>
+            
+          
+          
+          <Route path="/" element = {<TextForm showAlert={showAlert} heading="Enter the text to analyze:"/>}/>
+            
+          
+      </Routes>
+    
+      {/* <About/> */}
+    </div>
+    </Router> 
+    </> 
   );
+
+  // return(
+  //   <>
+  //   <Navbar dashboard="DASHBOARD" team="Functionality" mode={mode} toggleMode={toggleMode}/>
+  //   <Alert alert={alert}/>
+  //   <TextForm showAlert={showAlert} heading="Enter the text to analyze:"/>
+  //   </>
+  // );
 }
 
 export default App;

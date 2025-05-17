@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-
 export default function TextForm(props) {
 
     const handleUpClick = () =>{
@@ -32,10 +31,6 @@ export default function TextForm(props) {
     }
 
     const[text, setText] = useState('Enter text here');
-    // text = "new text";       // wrong way to change the state
-    // setText("new text");        // correct way to change the state
-
-    
   return (
     <>
         <div className="form-group" >
@@ -54,7 +49,7 @@ export default function TextForm(props) {
             <h2>Your text summary</h2>
             
             {/* {text.length == 0 ?(<p> {0} words and {text.length} characters</p>) :(<p>{text.split(" ").length} words and {text.length} characters</p>)} */}
-            <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+            <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
             <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} minutes read</p>
             <h2>Preview</h2>
             <p>{text.length>0 ? text : "Nothing to preview "}</p>
